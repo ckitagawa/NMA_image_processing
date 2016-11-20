@@ -94,5 +94,3 @@ class BlobDetector(object):
         keypoints = detector.detect(img)
         return keypoints
 
-
-
