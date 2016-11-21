@@ -4,6 +4,7 @@ Main script
 
 import transform_lib as tl
 import preprocessing as pp
+import Mathematical_Morphology as mm
 import cv2
 
 if __name__ == "__main__":
@@ -12,6 +13,10 @@ if __name__ == "__main__":
     img = cv2.imread('corneal1.png', 0)
     img = pp.preprocess(img)
     
+    #Creates a skeleton image
+    #skeletoninator = mm.skeletonize_image(img, display=True)
+    mm.skeletonize_image(img, display=True)
+
     # Detect blobs.
     detector = tl.BlobDetector()
     detector.set_defaults()
