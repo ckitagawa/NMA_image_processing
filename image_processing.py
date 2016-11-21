@@ -23,4 +23,8 @@ if __name__ == "__main__":
 
     # Analyze response.
     analyzer = tl.DelaunayAnalyzer(filtered_pts)
-    analyzer.show(range(1, 11))
+    analyzer.boo_graph()
+    #analyzer.show(range(1, 11))
+
+
+

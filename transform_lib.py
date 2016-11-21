@@ -5,6 +5,7 @@ Module for performing transforms on an image to determine its BOO.
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.tri as tri
 
 from scipy.spatial import Delaunay
 
@@ -27,6 +28,20 @@ class DelaunayAnalyzer(object):
             A list of neighbouring points for the point in consideration.
         """
         return self._triangles.vertex_neighbor_vertices[1][self._triangles.vertex_neighbor_vertices[0][point_index]:self._triangles.vertex_neighbor_vertices[0][point_index + 1]]
+
+    def boo_graph(self):
+        """
+            Create Bond orientational graph of points
+        """
+        points = np.array([list(elem) for elem in self.points])
+        triang = tri.Triangulation(x=points[:,0], y=points[:,1])
+        plt.figure()
+        plt.gca().set_aspect('equal')
+        plt.triplot(triang, 'bo-')
+        plt.title('triplot of Delaunay triangulation')
+        plt.show()
+        return points
+
 
     def boo_psi(self, guess):
         """
